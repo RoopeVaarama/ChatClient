@@ -6,4 +6,48 @@
     android:layout_height="match_parent"
     tools:context=".ChatActivity">
 
+    <EditText
+        android:id="@+id/messageView"
+        android:layout_width="293dp"
+        android:layout_height="61dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginEnd="6dp"
+        android:layout_marginRight="6dp"
+        android:layout_marginBottom="16dp"
+        android:ems="10"
+        android:hint="@string/type_your_message"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/sendButton"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/sendButton"
+        android:layout_width="75dp"
+        android:layout_height="63dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginLeft="6dp"
+        android:layout_marginTop="651dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
+        android:onClick="newMessage"
+        android:text="@string/send"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/messageView"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="412dp"
+        android:layout_height="648dp"
+        app:layout_constraintBottom_toTopOf="@+id/messageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>
