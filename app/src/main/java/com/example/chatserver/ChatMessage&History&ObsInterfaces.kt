@@ -1,4 +1,4 @@
-/*import kotlinx.serialization.Serializable
+import kotlinx.serialization.Serializable
 
 /**
  * Created by Topias, Roope and Tiia
@@ -66,4 +66,3 @@ object ChatConsole : ChatHistoryObserver {
         println(message)
     }
 }
-*/

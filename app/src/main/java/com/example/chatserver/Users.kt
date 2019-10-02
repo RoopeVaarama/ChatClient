@@ -1,7 +1,7 @@
-/*import kotlinx.serialization.enumFromName
+import kotlinx.serialization.enumFromName
 
 /**
- * Created by Topias, Roope and Tiia
+ * Created by Roope
  */
 
 /**
@@ -27,4 +27,4 @@ object Users {
         }
         return userNames
     }
-}*/
+}

@@ -1,4 +1,4 @@
-/*import kotlinx.serialization.UnstableDefault
+import kotlinx.serialization.UnstableDefault
 import kotlinx.serialization.json.Json
 import java.io.PrintWriter
 import java.net.Socket
@@ -75,5 +75,3 @@ class ChatConnector(s: Socket) : Runnable , ChatHistoryObserver {
 
     }
 }
-
-*/

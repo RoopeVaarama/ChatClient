@@ -1,4 +1,4 @@
-/*import java.net.ServerSocket
+import java.net.ServerSocket
 
 /**
  * Created by Topias, Roope and Tiia
@@ -32,4 +32,4 @@ class ChatServer{
             println("Server opened")
         }
     }
-}*/
+}

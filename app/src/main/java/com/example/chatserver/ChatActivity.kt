@@ -16,21 +16,19 @@ import kotlinx.android.synthetic.main.activity_chat.*
 class ChatActivity : AppCompatActivity() {
 
 
-    private var User: ArrayList<String> = ArrayList()
+    var user: ArrayList<String> = ArrayList()
     private var messages: ArrayList<String> = ArrayList()
     private lateinit var recyclerView: RecyclerView
     private lateinit var viewAdapter: RecyclerView.Adapter<*>
     private lateinit var viewManager: RecyclerView.LayoutManager
 
-    private val main = MainActivity()
-    private val username = main.username
+    //var username: String = " "
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat)
         viewManager = LinearLayoutManager(this)
-        viewAdapter = MyRecyclerViewAdapter(User, messages, this)
-
+        viewAdapter = MyRecyclerViewAdapter(user, messages, this)
 
         recyclerView = findViewById<RecyclerView>(R.id.recyclerView).apply {
             // use this setting to improve performance if you know that changes
@@ -48,8 +46,7 @@ class ChatActivity : AppCompatActivity() {
     fun newMessage(view: View){
         val inputField = findViewById<TextView>(R.id.messageView)
         Log.d("add", "adding")
-        User.add(username)
-        Log.d("username", username)
+        user.add("Roope")
         messages.add(inputField.text.toString())
         viewAdapter.notifyDataSetChanged()
     }
