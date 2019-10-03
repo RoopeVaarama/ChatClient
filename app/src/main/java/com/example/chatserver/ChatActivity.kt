@@ -1,5 +1,8 @@
 package com.example.chatserver
 
+import ChatConnector
+import ChatConnectorObserver
+import ChatMessage
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -11,18 +14,19 @@ import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.activity_chat.*
+import kotlinx.android.synthetic.main.name_recycler_view_item.*
+import kotlinx.serialization.UnstableDefault
 
 
-class ChatActivity : AppCompatActivity() {
+class ChatActivity : AppCompatActivity(), ChatConnectorObserver {
 
 
+    val chatconnector = ChatConnector()
     var user: ArrayList<String> = ArrayList()
     private var messages: ArrayList<String> = ArrayList()
     private lateinit var recyclerView: RecyclerView
     private lateinit var viewAdapter: RecyclerView.Adapter<*>
     private lateinit var viewManager: RecyclerView.LayoutManager
-
-    //var username: String = " "
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,6 +34,7 @@ class ChatActivity : AppCompatActivity() {
         viewManager = LinearLayoutManager(this)
         viewAdapter = MyRecyclerViewAdapter(user, messages, this)
 
+        val name = intent.getStringExtra("Username")
         recyclerView = findViewById<RecyclerView>(R.id.recyclerView).apply {
             // use this setting to improve performance if you know that changes
             // in content do not change the layout size of the RecyclerView
@@ -43,17 +48,25 @@ class ChatActivity : AppCompatActivity() {
         }
     }
 
-    fun newMessage(view: View){
+    @UnstableDefault
+    fun newInput(view: View){
+
         val inputField = findViewById<TextView>(R.id.messageView)
-        Log.d("add", "adding")
-        user.add("Roope")
-        messages.add(inputField.text.toString())
-        viewAdapter.notifyDataSetChanged()
+        chatconnector.sendMessage(ChatMessage(inputField.text.toString() , name.toString()))
+        Log.d("add", name.toString())
+    }
+
+    override fun newMessage(message: ChatMessage){
+        user.add(message.username)
+        messages.add(message.message)
+        runOnUiThread {
+            viewAdapter.notifyDataSetChanged()
+        }
     }
 
 }
 
-class MyRecyclerViewAdapter(
+class MyRecyclerViewAdapter (
     private val userName: List<String>,
     private val messages: List<String>,
     private val context: Context

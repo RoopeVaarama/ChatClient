@@ -15,9 +15,6 @@ import java.net.SocketAddress
 
 class MainActivity : AppCompatActivity() {
 
-
-
-    var username: String = " "
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -27,13 +24,15 @@ class MainActivity : AppCompatActivity() {
 
     fun login(view: View){
         val inputField = findViewById<TextView>(R.id.nameView)
-        username = inputField.text.toString()
+        val username = inputField.text.toString()
         if(username.isEmpty()){
             Toast.makeText(applicationContext,"Username should not be empty", Toast.LENGTH_SHORT).show()
         } else {
-        User.user = username
-        Log.d("asd", username)
-        val chat = Intent(this,ChatActivity::class.java)
+        Log.d("asd", User.user)
+        val chat = Intent(this,ChatActivity::class.java).apply{
+            putExtra("Username", username)
+
+        }
         startActivity(chat)
         }
     }

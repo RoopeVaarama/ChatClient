@@ -9,60 +9,67 @@ import kotlinx.serialization.Serializable
  * Chat message is the basic message class.
  */
 @Serializable
-class ChatMessage(var message: String = " ", var formattedtime : String = " ", var username : String = " "){
+class ChatMessage(var message: String = " ", var username : String = " "){
     override fun toString(): String {
-        return "Message: $message Time: $formattedtime User: $username"
+        return message + username
     }
 }
 
-/**
- * ChatHistory holds a list of the entire chat history and observers that
- * observe it's changes.
- */
-object ChatHistory : ChatHistoryObservable {
-    private val observers = mutableSetOf<ChatHistoryObserver>()
 
-    fun insert(message: ChatMessage) {
-        listOfChatMessages.add(message)
-        notifyObservers(message)
-    }
-
-    override fun registerObserver(observer: ChatHistoryObserver) {
-        observers.add(observer)
-    }
-
-    override fun deregisterObserver(observer: ChatHistoryObserver) {
-        observers.remove(observer)
-    }
-
-    override fun notifyObservers(message: ChatMessage) {
-        observers.forEach{it.newMessage(message)}
-    }
-
-    private val listOfChatMessages = mutableListOf<ChatMessage>()
-
-    //Returns the entire chat history as a single string
-    override fun toString(): String {
-        var chatHistory = ""
-        for (chatMessage in listOfChatMessages) {
-            chatHistory += (chatMessage.formattedtime) + (" ") + (chatMessage.message) + "\n"
-        }
-        return chatHistory
-    }
-}
-
-interface ChatHistoryObservable {
-    fun registerObserver(observer:ChatHistoryObserver)
-    fun deregisterObserver(observer:ChatHistoryObserver)
+interface ChatConnectorObservable {
+    fun registerObserver(observer:ChatConnectorObserver)
+    fun deregisterObserver(observer:ChatConnectorObserver)
     fun notifyObservers (message:ChatMessage)
 }
 
-interface ChatHistoryObserver {
+interface ChatConnectorObserver {
     fun newMessage(message:ChatMessage)
 
 }
-object ChatConsole : ChatHistoryObserver {
+
+
+
+
+
+
+
+
+
+
+
+
+/*object ChatConsole : ChatConnectorObserver {
     override fun newMessage(message: ChatMessage) {
         println(message)
     }
 }
+
+
+
+
+
+/**
+ * ChatHistory holds a list of the entire chat history and observers that
+ * observe it's changes.
+
+object ChatHistory : ChatConnectorObserver {
+
+
+fun insert(message: ChatMessage) {
+listOfChatMessages.add(message)
+notifyObservers(message)
+}
+
+
+
+private val listOfChatMessages = mutableListOf<ChatMessage>()
+
+//Returns the entire chat history as a single string
+override fun toString(): String {
+var chatHistory = ""
+for (chatMessage in istOfChatMessages) {
+chatHistory += (chatMessage.message) + "\n"
+}
+return chatHistory
+}
+}**/
