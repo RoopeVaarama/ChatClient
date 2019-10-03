@@ -1,7 +1,7 @@
 import kotlinx.serialization.Serializable
 
 /**
- * Created by Topias, Roope and Tiia
+ * Created by Roope
  */
 
 

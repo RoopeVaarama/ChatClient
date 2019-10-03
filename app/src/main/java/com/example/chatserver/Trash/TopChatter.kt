@@ -2,7 +2,7 @@
  /** Created by Roope
  * TopChatter class includes a list of the most active chatters
  * and it updates everytime a new message is posted.
- */
+
 object TopChatter : ChatHistoryObserver {
     private val activeUsersMessages = mutableMapOf<String, Int>()
     override fun newMessage(message: ChatMessage) {
@@ -25,4 +25,4 @@ object TopChatter : ChatHistoryObserver {
         }
         return returnedString
     }
-}
+}*/

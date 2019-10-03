@@ -6,7 +6,7 @@ import kotlinx.serialization.enumFromName
 
 /**
  * This singleton handles all the user data
- */
+
 object Users {
     val setofUsers = hashSetOf<String>()
 
@@ -27,4 +27,4 @@ object Users {
         }
         return userNames
     }
-}
+} */

@@ -1,3 +1,4 @@
+/*import androidx.appcompat.app.AppCompatActivity
 import java.net.ServerSocket
 
 /**
@@ -32,4 +33,4 @@ class ChatServer{
             println("Server opened")
         }
     }
-}
+}*/
