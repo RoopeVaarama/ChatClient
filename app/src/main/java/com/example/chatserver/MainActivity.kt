@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         if(username.isEmpty()){
             Toast.makeText(applicationContext,"Username should not be empty", Toast.LENGTH_SHORT).show()
         } else {
-        Log.d("asd", User.user)
+        Log.d("asd", username)
         val chat = Intent(this,ChatActivity::class.java).apply{
             putExtra("Username", username)
 

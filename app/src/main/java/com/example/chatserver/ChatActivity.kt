@@ -20,7 +20,7 @@ import kotlinx.serialization.UnstableDefault
 
 class ChatActivity : AppCompatActivity(), ChatConnectorObserver {
 
-
+    var name: String = ""
     val chatconnector = ChatConnector()
     var user: ArrayList<String> = ArrayList()
     private var messages: ArrayList<String> = ArrayList()
@@ -33,8 +33,15 @@ class ChatActivity : AppCompatActivity(), ChatConnectorObserver {
         setContentView(R.layout.activity_chat)
         viewManager = LinearLayoutManager(this)
         viewAdapter = MyRecyclerViewAdapter(user, messages, this)
+        val nameFromIntent = intent.getStringExtra("Username")
+        if (nameFromIntent != null) {
+                name = nameFromIntent
+            } else {
+            name = "Batman"
+        }
 
-        val name = intent.getStringExtra("Username")
+        chatconnector.registerObserver(this)
+        Thread(chatconnector).start()
         recyclerView = findViewById<RecyclerView>(R.id.recyclerView).apply {
             // use this setting to improve performance if you know that changes
             // in content do not change the layout size of the RecyclerView
@@ -51,16 +58,19 @@ class ChatActivity : AppCompatActivity(), ChatConnectorObserver {
     @UnstableDefault
     fun newInput(view: View){
 
+
         val inputField = findViewById<TextView>(R.id.messageView)
-        chatconnector.sendMessage(ChatMessage(inputField.text.toString() , name.toString()))
-        Log.d("add", name.toString())
+        Thread {
+            chatconnector.sendMessage(ChatMessage(inputField.text.toString(), name))
+            Log.d("add", inputField.text.toString() + name)
+        }.start()
     }
 
     override fun newMessage(message: ChatMessage){
+        runOnUiThread {
         user.add(message.username)
         messages.add(message.message)
-        runOnUiThread {
-            viewAdapter.notifyDataSetChanged()
+        viewAdapter.notifyDataSetChanged()
         }
     }
 
