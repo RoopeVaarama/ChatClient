@@ -50,7 +50,7 @@ class ChatConnector : Runnable , ChatConnectorObservable {
          * The next block asks the client for an username and checks if it is not in use.
          * ====================================================================
          */
-        //For phone 127.0.0.1/10.0.2.2
+        //For phone 127.0.0.1/emulator 10.0.2.2
         val socket = Socket("10.0.2.2", 30001)
         val scanner1 = Scanner(socket.getInputStream())
         printStream = PrintStream(socket.getOutputStream())

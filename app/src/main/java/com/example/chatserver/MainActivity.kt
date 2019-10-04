@@ -15,7 +15,7 @@ import java.net.SocketAddress
 class MainActivity : AppCompatActivity() {
 
 
-    var username: String = " "
+    private var username: String = " "
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)

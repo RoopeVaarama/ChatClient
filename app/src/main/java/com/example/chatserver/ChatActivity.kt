@@ -3,34 +3,24 @@ package com.example.chatserver
 import ChatConnector
 import ChatConnectorObserver
 import ChatMessage
-import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import android.view.ViewManager
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.my_message.view.*
-import kotlinx.android.synthetic.main.other_message.view.*
-import kotlinx.android.synthetic.*
 import kotlinx.android.synthetic.main.activity_chat.*
-import kotlinx.android.synthetic.main.name_recycler_view_item.*
+
 import kotlinx.serialization.UnstableDefault
-import java.sql.Time
 import java.util.*
-import java.util.Calendar.getInstance
-import kotlin.collections.ArrayList
+
 
 
 
 class ChatActivity : AppCompatActivity(), ChatConnectorObserver {
 
 
-    val chatconnector = ChatConnector()
+    private val chatconnector = ChatConnector()
     private lateinit var adapter: MessageAdapter
 
 
