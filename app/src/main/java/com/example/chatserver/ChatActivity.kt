@@ -10,7 +10,6 @@ import android.view.View
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_chat.*
-
 import kotlinx.serialization.UnstableDefault
 import java.util.*
 
@@ -32,10 +31,9 @@ class ChatActivity : AppCompatActivity(), ChatConnectorObserver {
         recyclerView.layoutManager = LinearLayoutManager(this)
         adapter = MessageAdapter(this)
         recyclerView.adapter = adapter
-
-
         chatconnector.registerObserver(this)
         Thread(chatconnector).start()
+
     }
 
     @UnstableDefault

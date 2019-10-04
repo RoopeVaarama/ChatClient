@@ -1,4 +1,5 @@
 import android.util.Log
+import com.example.chatserver.App
 import kotlinx.serialization.UnstableDefault
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.parse
