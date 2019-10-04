@@ -1,5 +1,4 @@
-
- /** Created by Roope
+/** Created by Roope
  * TopChatter class includes a list of the most active chatters
  * and it updates everytime a new message is posted.
 
