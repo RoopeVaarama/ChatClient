@@ -6,48 +6,63 @@
     android:layout_height="match_parent"
     tools:context=".ChatActivity">
 
-    <EditText
-        android:id="@+id/messageView"
-        android:layout_width="293dp"
-        android:layout_height="61dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginEnd="6dp"
-        android:layout_marginRight="6dp"
-        android:layout_marginBottom="16dp"
-        android:ems="10"
-        android:hint="@string/type_your_message"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/sendButton"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/sendButton"
-        android:layout_width="75dp"
-        android:layout_height="63dp"
-        android:layout_marginStart="6dp"
-        android:layout_marginLeft="6dp"
-        android:layout_marginTop="651dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="16dp"
-        android:onClick="newInput"
-        android:text="@string/send"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/messageView"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/messageView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="55dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:scrollbars="vertical"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:background="@color/colorPrimaryDark"
+        android:layout_marginBottom="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/layout_messageArea"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/layout_messageArea"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="#ffffff"
+        android:minHeight="48dp"
+        android:onClick="newInput"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+        <EditText
+            android:id="@+id/messageView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:hint="Enter a message"
+            android:maxLines="6" />
+
+        <Button
+            android:id="@+id/sendButton"
+            android:layout_width="64dp"
+            android:layout_height="48dp"
+            android:layout_gravity="bottom"
+            android:clickable="true"
+            android:gravity="center"
+            android:onClick="newInput"
+            android:text="@string/send"
+            android:textSize="14dp" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

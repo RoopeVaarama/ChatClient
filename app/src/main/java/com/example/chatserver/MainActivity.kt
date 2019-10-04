@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.TextView
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 import java.net.ServerSocket
 import java.net.Socket
@@ -14,21 +15,27 @@ import java.net.SocketAddress
 class MainActivity : AppCompatActivity() {
 
 
-
     var username: String = " "
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
     }
-
-    fun login(view: View){
-        val inputField = findViewById<TextView>(R.id.nameView)
-        username = inputField.text.toString()
-        Users.setofUsers.add(username)
-        Log.d("asd", username)
-        val chat = Intent(this,ChatActivity::class.java)
-        startActivity(chat)
+        fun login(view: View) {
+            val inputField = findViewById<TextView>(R.id.nameView)
+            username = inputField.text.toString()
+            if (username.isEmpty()) {
+                Toast.makeText(
+                    applicationContext,
+                    "Username should not be empty",
+                    Toast.LENGTH_SHORT
+                ).show()
+            } else {
+                App.user = username
+                Log.d("asd", username)
+                val chat = Intent(this, ChatActivity::class.java)
+                Toast.makeText(applicationContext, "Login successful!", Toast.LENGTH_SHORT).show()
+                startActivity(chat)
+            }
+        }
     }
-}
