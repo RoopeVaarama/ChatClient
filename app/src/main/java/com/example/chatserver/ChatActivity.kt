@@ -13,6 +13,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.*
 import kotlinx.android.synthetic.main.activity_chat.*
 import kotlinx.android.synthetic.main.name_recycler_view_item.*
 import kotlinx.serialization.UnstableDefault
@@ -63,6 +64,7 @@ class ChatActivity : AppCompatActivity(), ChatConnectorObserver {
         Thread {
             chatconnector.sendMessage(ChatMessage(inputField.text.toString(), name))
             Log.d("add", inputField.text.toString() + name)
+            inputField.text = ""
         }.start()
     }
 
@@ -71,6 +73,7 @@ class ChatActivity : AppCompatActivity(), ChatConnectorObserver {
         user.add(message.username)
         messages.add(message.message)
         viewAdapter.notifyDataSetChanged()
+        viewManager.scrollToPosition(messages.size -1)
         }
     }
 
@@ -87,6 +90,7 @@ class MyRecyclerViewAdapter (
 
         val textviewname = itemView.findViewById<TextView>(R.id.name) as TextView
         val textviewmessage = itemView.findViewById<TextView>(R.id.message) as TextView
+
 
     }
 
