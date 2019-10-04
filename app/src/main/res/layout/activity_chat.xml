@@ -10,19 +10,18 @@
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="55dp"
         android:layout_marginLeft="10dp"
-        android:layout_marginStart="10dp"
+        android:layout_marginTop="4dp"
         android:scrollbars="vertical"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent">
-    </androidx.recyclerview.widget.RecyclerView>
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></androidx.recyclerview.widget.RecyclerView>
 
     <View
         android:layout_width="0dp"
         android:layout_height="2dp"
-        android:background="@color/colorPrimaryDark"
+
         android:layout_marginBottom="0dp"
         app:layout_constraintBottom_toTopOf="@+id/layout_messageArea"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -32,7 +31,7 @@
         android:id="@+id/layout_messageArea"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="#ffffff"
+        android:background="#EEEEEE"
         android:minHeight="48dp"
         android:onClick="newInput"
         android:orientation="horizontal"
@@ -47,21 +46,25 @@
             android:layout_gravity="center"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
+            android:padding="10dp"
+            android:paddingLeft="10dp"
             android:layout_weight="1"
-            android:background="@android:color/transparent"
             android:hint="Enter a message"
-            android:maxLines="6" />
+            android:maxLines="6"
+            android:background="@drawable/rounded_edittext"/>
 
         <Button
             android:id="@+id/sendButton"
             android:layout_width="64dp"
             android:layout_height="48dp"
             android:layout_gravity="bottom"
+            android:layout_marginRight="10dp"
             android:clickable="true"
             android:gravity="center"
             android:onClick="newInput"
-            android:text="@string/send"
-            android:textSize="14dp" />
+            android:textSize="14dp"
+            android:background="@drawable/button"
+            />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
