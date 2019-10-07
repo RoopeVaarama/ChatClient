@@ -11,7 +11,7 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatDelegate
 class MainActivity : AppCompatActivity() {
 
-    var checked = false
+
     private var username: String = " "
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,29 +30,22 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
             return when (item.itemId) {
-                R.id.app_bar_switch -> {
-                    nightMode()
-                    return true
-                }
                 R.id.menuitem -> {
-
+                    if(item.isChecked){
+                        item.isChecked = false
+                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                    }else{
+                        item.isChecked = true
+                        runOnUiThread() {
+                            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                        }
+                    }
                     return true
                 }
                 else -> super.onOptionsItemSelected(item)
             }
         }
 
-    fun nightMode() {
-        runOnUiThread {
-            checked = if (!checked) {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-                true
-            } else {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-                false
-            }
-        }
-    }
     fun login(view: View) {
         val inputField = findViewById<TextView>(R.id.nameView)
         username = inputField.text.toString()

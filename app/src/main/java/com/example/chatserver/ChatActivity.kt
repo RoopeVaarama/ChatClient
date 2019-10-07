@@ -6,8 +6,11 @@ import ChatMessage
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_chat.*
 import kotlinx.serialization.UnstableDefault
@@ -34,6 +37,30 @@ class ChatActivity : AppCompatActivity(), ChatConnectorObserver {
         chatconnector.registerObserver(this)
         Thread(chatconnector).start()
 
+    }
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        menuInflater.inflate(R.menu.mymenu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean{
+
+        return when (item.itemId) {
+            R.id.menuitem -> {
+                if(item.isChecked){
+                    item.isChecked = false
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                }else{
+                    item.isChecked = true
+                    runOnUiThread() {
+                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                    }
+                }
+                return true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
     @UnstableDefault

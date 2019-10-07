@@ -3,5 +3,5 @@
     <string name="Login" translatable="false">Login</string>
     <string name="type_your_message">Type your message</string>
     <string name="send">Send</string>
-    <string name="mode">Light Mode</string>
+    <string name="mode">Dark Mode</string>
 </resources>
