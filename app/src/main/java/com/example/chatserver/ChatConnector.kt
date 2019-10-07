@@ -11,9 +11,9 @@ import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.Scanner
 
-/**
- * Created by Roope
- */
+
+ //Created by Roope
+
 class ChatConnector : Runnable , ChatConnectorObservable {
 
     private val observers = mutableSetOf<ChatConnectorObserver>()
