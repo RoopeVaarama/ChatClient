@@ -40,7 +40,7 @@ class ChatConnector : Runnable , ChatConnectorObservable {
     fun sendMessage(message: ChatMessage) {
         val messageObjectJson = Json.stringify(ChatMessage.serializer(), message)
         printStream.println(messageObjectJson) // goes to buffer
-        printStream.flush() // pushes it from buffer
+        //.flush() // pushes it from buffer
     }
 
 
@@ -54,7 +54,7 @@ class ChatConnector : Runnable , ChatConnectorObservable {
         //For phone 127.0.0.1/emulator 10.0.2.2
         val socket = Socket("10.0.2.2", 30001)
         val scanner1 = Scanner(socket.getInputStream())
-        printStream = PrintStream(socket.getOutputStream())
+        printStream = PrintStream(socket.getOutputStream(), true)
         while (true){
             val message = scanner1.nextLine()
             Log.d("Tag", message)

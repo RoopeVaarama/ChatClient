@@ -9,6 +9,7 @@
     <TextView
         android:id="@+id/txtOtherUser"
         android:text="Username"
+        android:textColor="@color/textColor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="12sp"
@@ -31,6 +32,7 @@
 
     <TextView
         android:id="@+id/txtOtherMessageTime"
+        android:textColor="@color/textColor"
         android:text="12:00 PM"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -3,12 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/colorBackground"
     android:layout_height="match_parent"
     tools:context=".ChatActivity">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
+        android:background="@color/colorBackground"
         android:layout_height="match_parent"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="4dp"
@@ -31,9 +33,8 @@
         android:id="@+id/layout_messageArea"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="#EEEEEE"
+        android:background="@color/colorBackground"
         android:minHeight="48dp"
-        android:onClick="newInput"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
