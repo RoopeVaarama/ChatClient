@@ -10,11 +10,11 @@
 
     <EditText
         android:id="@+id/nameView"
-        android:layout_width="399dp"
-        android:layout_height="49dp"
+        android:layout_width="446dp"
+        android:layout_height="52dp"
         android:layout_marginStart="100dp"
         android:layout_marginLeft="100dp"
-        android:hint="Insert username"
+        android:hint="@string/insert_username"
         android:textColor="@color/textColor"
         android:textColorHint="@color/textColor"
         android:textSize="18sp"
@@ -25,22 +25,20 @@
 
     <Button
         android:id="@+id/loginButton"
-        android:layout_width="176dp"
-        android:layout_height="49dp"
+        android:layout_width="73dp"
+        android:layout_height="50dp"
         android:layout_marginStart="35dp"
         android:layout_marginLeft="35dp"
         android:layout_marginTop="323dp"
         android:layout_marginEnd="48dp"
         android:layout_marginRight="48dp"
         android:layout_marginBottom="360dp"
-        android:textColor="@color/button"
+        android:background="@drawable/login"
         android:onClick="login"
-        android:text="@string/Login"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/nameView"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.498" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
