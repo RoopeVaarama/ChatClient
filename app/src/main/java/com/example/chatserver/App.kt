@@ -7,5 +7,6 @@ class App:Application() {
     companion object
     lateinit {
         var user: String = ""
+        var check: Boolean = false
     }
 }

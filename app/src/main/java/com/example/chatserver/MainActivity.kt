@@ -9,6 +9,7 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatDelegate
+
 class MainActivity : AppCompatActivity() {
 
 
@@ -23,28 +24,30 @@ class MainActivity : AppCompatActivity() {
 
    override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.mymenu, menu)
-        return true
+       menuInflater.inflate(R.menu.mymenu, menu)
+       return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
-            return when (item.itemId) {
-                R.id.menuitem -> {
-                    if(item.isChecked){
-                        item.isChecked = false
-                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-                    }else{
-                        item.isChecked = true
-                        runOnUiThread() {
-                            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-                        }
-                    }
-                    return true
-                }
-                else -> super.onOptionsItemSelected(item)
+        return when (item.itemId) {
+            R.id.menuitem -> {
+                darkmode()
+                return true
             }
+            else -> super.onOptionsItemSelected(item)
         }
+    }
+    fun darkmode() {
+        if (App.check) {
+            App.check = false
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        } else {
+            Log.d("chek", App.check.toString())
+            App.check = true
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        }
+    }
 
     fun login(view: View) {
         val inputField = findViewById<TextView>(R.id.nameView)

@@ -44,22 +44,26 @@ class ChatActivity : AppCompatActivity(), ChatConnectorObserver {
         return true
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean{
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
         return when (item.itemId) {
             R.id.menuitem -> {
-                if(item.isChecked){
-                    item.isChecked = false
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-                }else{
-                    item.isChecked = true
-                    runOnUiThread() {
-                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-                    }
-                }
+                darkmode()
                 return true
+
             }
             else -> super.onOptionsItemSelected(item)
+        }
+    }
+    fun darkmode() {
+        if (App.check) {
+            App.check = false
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+
+        } else {
+            Log.d("chek", App.check.toString())
+            App.check = true
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
         }
     }
 
@@ -79,7 +83,7 @@ class ChatActivity : AppCompatActivity(), ChatConnectorObserver {
         val message2 = Message(message.message, message.username, time)
         runOnUiThread {
         adapter.addMessage(message2)
-        recyclerView.scrollToPosition(adapter.itemCount -1)
+        recyclerView.scrollToPosition(adapter.itemCount-1)
         }
     }
 
