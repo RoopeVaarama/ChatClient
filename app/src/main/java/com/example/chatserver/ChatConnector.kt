@@ -30,8 +30,7 @@ class ChatConnector : Runnable , ChatConnectorObservable {
         observers.forEach{it.newMessage(message)}
     }
 
-    //Getting the input and output streams from the socket
-
+    //Getting the input from the socket
     private lateinit var printStream: PrintStream
 
     //This function is called whenever a new message is received by the server.
@@ -46,11 +45,10 @@ class ChatConnector : Runnable , ChatConnectorObservable {
 
     @UnstableDefault
     override fun run() {
-
-        /**
-         * The next block asks the client for an username and checks if it is not in use.
-         * ====================================================================
-         */
+        //While method for reading the new inputs from input stream
+        //Log for message
+        //Json message being parsen
+        //notifying observers with the new message
         //For phone 127.0.0.1/emulator 10.0.2.2
         val socket = Socket("10.0.2.2", 30001)
         val scanner1 = Scanner(socket.getInputStream())

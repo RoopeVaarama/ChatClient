@@ -18,16 +18,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        //AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-
     }
-
+    //onCreate for Options menu in android
    override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
        menuInflater.inflate(R.menu.mymenu, menu)
        return true
     }
-
+    //onClicklistener for Options menu items
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
         return when (item.itemId) {
@@ -38,6 +36,7 @@ class MainActivity : AppCompatActivity() {
             else -> super.onOptionsItemSelected(item)
         }
     }
+    //Function that is called in menuitems click and changes the app to dark mode and light mode
     fun darkmode() {
         if (App.check) {
             App.check = false
@@ -48,7 +47,10 @@ class MainActivity : AppCompatActivity() {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
         }
     }
-
+    //Function when login is being clicked to take the username from the inputfield to a data class where the current user for app is being stored
+    //If username field is empty it toast that you need to insert one and stops there
+    //If there is a username it is inserted to App() class in to user
+    //And last thing is a intento to start a new activity
     fun login(view: View) {
         val inputField = findViewById<TextView>(R.id.nameView)
         username = inputField.text.toString()

@@ -38,12 +38,13 @@ class ChatActivity : AppCompatActivity(), ChatConnectorObserver {
         Thread(chatconnector).start()
 
     }
+    //onCreate for Options menu in android
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.mymenu, menu)
         return true
     }
-
+    //onClicklistener for Options menu items
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
         return when (item.itemId) {
@@ -55,6 +56,7 @@ class ChatActivity : AppCompatActivity(), ChatConnectorObserver {
             else -> super.onOptionsItemSelected(item)
         }
     }
+    //Function that is called in menuitems click and changes the app to dark mode and light mode
     fun darkmode() {
         if (App.check) {
             App.check = false
@@ -66,7 +68,8 @@ class ChatActivity : AppCompatActivity(), ChatConnectorObserver {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
         }
     }
-
+    //When new input is clicked it's being read here and send to chatconnector in a new threat
+    // also the inputfield is being cleared after that
     @UnstableDefault
     fun newInput(view: View){
 
@@ -77,7 +80,9 @@ class ChatActivity : AppCompatActivity(), ChatConnectorObserver {
             inputField.text = ""
         }.start()
     }
-
+    //When new message is received this method takes the current time in millis and adds it to the message2 that is in form Message
+    //New uithread adds the message to recyclerviews adapter and scroll the view to the latest message
+    //Latest message is shown in to bottom part of the recyclerview
     override fun newMessage(message: ChatMessage) {
         val time = Calendar.getInstance().timeInMillis
         val message2 = Message(message.message, message.username, time)
